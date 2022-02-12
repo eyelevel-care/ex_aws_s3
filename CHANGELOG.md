@@ -68,6 +68,78 @@ v2.3.2 (2021-12-03)
 - Support tagging_directive in ExAws.S3.Utils.put_object_headers/1
 - Add x-amz-security-token field in presigned_post when required
 
+v2.5.7 (2025-04-15)
+
+- Add support for `If-Match` and `If-None-Match` headers to `PutObject` call
+- Handle errors in `parse_bucket_object_versions/1`
+
+v2.5.6 (2024-12-13)
+
+- Fix compilation warning on Elixir 1.17
+
+v2.5.5 (2024-10-31)
+
+- Fix stream! handling when the client adapter models response headers as lists (eg Req)
+
+v2.5.4 (2024-09-10)
+
+- Add empty value checks for `delete_object`
+- Handle errors in `parse_complete_multipart_upload`
+- Add `newer_concurrent_versions` option to put lifecycle
+- Show changelog link on hex info page
+- Add missing `meta` opts from the upload type spec
+- Add `newer_noncurrent_versions` to `put_bucket_lifecycle`
+- Clarify in docs that presigned URLs are generated locally
+- Document the :expires_in type
+- Add checksum header when hash is not MD5
+
+v2.5.3 (2024-01-11)
+
+- Add option to get auth from AuthCache on every request when uploading to S3 in a stream
+- Fix dialyzer warnings with Elixir 1.16
+- Allow hash types other than MD5 when generating body hash
+- Fix error handling for `parse_upload_part_copy`
+
+v2.5.2 (2023-10-16)
+
+- Properly fix typespec for presigned_url/5, and include support for Elixir datetime types.
+
+v2.5.1 (2023-10-12)
+
+- Fix typespec for presigned_url/5
+
+v2.5.0 (2023-10-04)
+
+- Increase minimum Elixir version to 1.11
+- Add tests for Elixir 1.15
+- Merge fix for multipart copy (sort of BREAKING: this changes the signature of
+ `upload_part_copy`, however that function could never have worked properly previously so I have
+ to assume that nobody was actually using it).
+- Add support for optional `start_datetime` opt on `presigned_url/5`
+- Allow 0 day triggers for lifecycle rules
+- Return the full error on download failure rather than the generic "error downloading file" string
+
+v2.4.0 (2023-01-10)
+
+- Update `presigned_post` to support the same URL options as `presigned_url`.
+- Add `bucket_as_host` to `presigned_url_opts`
+- Bring minimum Elixir and Erlang versions into line with base ExAws
+- Use percent encoding instead of www form for header
+
+v2.3.3 (2022-06-30)
+
+- Update docs
+- Support updating lifecycles for non-versioned buckets
+- Function spec fixes
+
+v2.3.2 (2021-12-03)
+- Support tagging_directive in ExAws.S3.Utils.put_object_headers/1
+- Add x-amz-security-token field in presigned_post when required
+
+v2.3.2 (2021-12-02)
+
+- Add `x-amz-security-token` field in `presigned_post` when required
+
 v2.3.1 (2021-10-18)
 
 - Add `presigned_post` function
