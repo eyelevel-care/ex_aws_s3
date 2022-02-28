@@ -55,7 +55,7 @@ defmodule ExAws.S3 do
 
   @type presigned_url_opts :: [
           {:expires_in, expires_in_seconds}
-          | {:virtual_host, boolean}
+          | {:virtual_host, boolean | binary}
           | {:s3_accelerate, boolean}
           | {:query_params, [{binary, binary}]}
           | {:headers, [{binary, binary}]}
@@ -1505,6 +1505,8 @@ defmodule ExAws.S3 do
 
       false ->
         "#{config[:scheme]}#{config[:host]}#{port}/#{bucket}#{object}"
+
+      defined_virtual_host -> "#{defined_virtual_host}/#{bucket}/#{object}"
     end
   end
 
